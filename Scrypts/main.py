@@ -4,17 +4,7 @@ import pandas as pd
 from math import pi
  
 # Set data
-"""df = pd.DataFrame({
-'group': ['A','B','C','D'],
-'var1': [38, 1.5, 30, 4],
-'var2': [29, 10, 9, 34],
-'var3': [8, 39, 23, 24],
-'var4': [7, 31, 33, 14],
-'var5': [28, 15, 32, 14]
-})"""
 df = pd.read_csv ('tabela_danych_po_typach.csv')
-# ------- PART 1: Create background
-print(df)
  
 # number of variable
 categories=list(df)[1:]
@@ -38,9 +28,6 @@ plt.xticks(angles[:-1], categories)
 ax.set_rlabel_position(0)
 plt.yticks([10, 20, 30, 40, 50, 60, 70], ["10","20","30", "40", "50", "60", "70"], color="grey", size=7)
 plt.ylim(0.7)
- 
-
-# ------- PART 2: Add plots
  
 # Plot each individual = each line of the data
 # I don't make a loop, because plotting more than 3 groups makes the chart unreadable
