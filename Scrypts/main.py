@@ -4,7 +4,7 @@ import pandas as pd
 from math import pi
  
 # Set data
-df = pd.read_csv ('tabela_danych_po_typach.csv')
+df = pd.read_csv ('Database/grouped_by_type_reversed.csv')
  
 # number of variable
 categories=list(df)[1:]
@@ -33,7 +33,7 @@ plt.ylim(0.7)
 # I don't make a loop, because plotting more than 3 groups makes the chart unreadable
 
 def add_data_to_this_sheet():
-    for i in range(0, 10):
+    for i in range(0, 2):
         values=df.loc[i].drop('group').values.flatten().tolist()
         values += values[:1]
         ax.plot(angles, values, linewidth=1, linestyle='solid', label="group A")

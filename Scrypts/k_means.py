@@ -42,7 +42,7 @@ print(X)
 plt.scatter(X[:, 0], X[:, 1], s=50)
 plt.show()
 
-kmeans = KMeans(n_clusters=4)
+kmeans = KMeans(n_clusters=3)
 kmeans.fit(X)
 y_kmeans = kmeans.predict(X)
 plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
