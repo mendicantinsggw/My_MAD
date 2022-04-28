@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# subject percent ranges for each region
 data = [
 	[31.20, 31.37, 30.83, 30.57, 33.92, 39.49, 65.60, 49.96, 28.07],
 	[30.29, 30.97, 36.45, 30.84, 35.65, 41.05, 65.03, 44.49, 27.77],
@@ -19,6 +20,8 @@ data = [
 	[32.22, 32.81, 35.28, 32.15, 36.45, 39.17, 64.25, 52.65, 28.58],
 	[32.85, 33.54, 39.14, 30.48, 34.55, 35.51, 65.76, 54.57, 27.86]
 ]
+
+# the same data but each subject is in the row instead of the column
 data_t = np.transpose(data)
 
 regions = [ # short regions names
@@ -73,25 +76,19 @@ colors = [
 
 bplots = []
 
+def generate_boxplot(labels, plotdata):
+	fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(8,6))
+	bplot = axes.boxplot(
+		x=plotdata,
+		labels=labels,
+		vert=False,
+		patch_artist=True)
+	for patch, color in zip(bplot['boxes'], colors):
+		patch.set_facecolor(color)
+	plt.show()
+
 # for regions
-fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(8,6))
-bplot = axes.boxplot(
-	x=data,
-	labels=regions,
-	vert=False,
-	patch_artist=True)
-for patch, color in zip(bplot['boxes'], colors):
-	patch.set_facecolor(color)
-plt.show()
+generate_boxplot(regions, data)
 
 # for subjects
-fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(6,4))
-bplot = axes.boxplot(
-	x=np.transpose(data_t), # for some weird reason data had to be transposed twice
-	labels=subjects,
-	vert=False,
-	patch_artist=True)
-for patch, color in zip(bplot['boxes'], colors):
-	patch.set_facecolor(color)
-
-plt.show()
+generate_boxplot(subjects, np.transpose(data_t)) # for some weird reason data has to be transposed twice

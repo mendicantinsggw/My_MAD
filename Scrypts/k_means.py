@@ -10,8 +10,10 @@ dataset = pd.read_csv('Database/Grouped_by_type.csv', header=0)
 
 X = dataset.iloc[:, 1:9].values
 
-#Divide data into strict and non-strict science
-print(X) # 
+# Divide data into strict and non-strict science
+# X - strict science
+# Y - non-strict science
+print(X) # output data for each region
 plt.scatter(X[:, 0], X[:, 1], s=50)
 plt.show()
 

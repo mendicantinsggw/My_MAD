@@ -4,7 +4,7 @@ import pandas as pd
 from math import pi
  
 # Set data
-df = pd.read_csv ('Database/grouped_by_type_reversed.csv')
+df = pd.read_csv ('Database/Grouped_by_type_reversed.csv')
  
 # number of variable
 categories=list(df)[1:]
@@ -26,17 +26,18 @@ plt.xticks(angles[:-1], categories)
  
 # Draw ylabels
 ax.set_rlabel_position(0)
-plt.yticks([10, 20, 30, 40, 50, 60, 70], ["10","20","30", "40", "50", "60", "70"], color="grey", size=7)
+plt.yticks([10, 20, 30, 40, 50, 60], ["10","20","30", "40", "50", "60"], color="grey", size=6)
 plt.ylim(0.7)
  
 # Plot each individual = each line of the data
 # I don't make a loop, because plotting more than 3 groups makes the chart unreadable
+labels = ["ścisłe", "inne"]
 
 def add_data_to_this_sheet():
-    for i in range(0, 2):
+    for i in range(2):
         values=df.loc[i].drop('group').values.flatten().tolist()
         values += values[:1]
-        ax.plot(angles, values, linewidth=1, linestyle='solid', label="group A")
+        ax.plot(angles, values, linewidth=1, linestyle='solid', label=labels[i])
         ax.fill(angles, values, 'b', alpha=0.1)
 add_data_to_this_sheet()
 
