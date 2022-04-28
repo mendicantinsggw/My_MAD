@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-dane = [
+data = [
 	[31.20, 31.37, 30.83, 30.57, 33.92, 39.49, 65.60, 49.96, 28.07],
 	[30.29, 30.97, 36.45, 30.84, 35.65, 41.05, 65.03, 44.49, 27.77],
 	[33.05, 36.91, 38.04, 31.21, 35.11, 33.74, 61.29, 46.15, 31.20],
@@ -19,9 +19,9 @@ dane = [
 	[32.22, 32.81, 35.28, 32.15, 36.45, 39.17, 64.25, 52.65, 28.58],
 	[32.85, 33.54, 39.14, 30.48, 34.55, 35.51, 65.76, 54.57, 27.86]
 ]
-dane_t = np.transpose(dane)
+data_t = np.transpose(data)
 
-wojewodztwa = [
+regions = [ # short regions names
 	"Dol",
 	"Kuj",
 	"Lube",
@@ -40,7 +40,7 @@ wojewodztwa = [
 	"Zach"
 ]
 
-przedmioty = [
+subjects = [ # short subjects names
 	"biol",
 	"chem",
 	"fiz",
@@ -73,26 +73,25 @@ colors = [
 
 bplots = []
 
-#dla wojewodztw, na jednym wykresie
-
+# for regions
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(8,6))
 bplot = axes.boxplot(
-	x=dane,
-	labels=wojewodztwa,
+	x=data,
+	labels=regions,
+	vert=False,
+	patch_artist=True)
+for patch, color in zip(bplot['boxes'], colors):
+	patch.set_facecolor(color)
+plt.show()
+
+# for subjects
+fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(6,4))
+bplot = axes.boxplot(
+	x=np.transpose(data_t), # for some weird reason data had to be transposed twice
+	labels=subjects,
 	vert=False,
 	patch_artist=True)
 for patch, color in zip(bplot['boxes'], colors):
 	patch.set_facecolor(color)
 
-'''
-#dla przedmiotow, na jednym wykresie
-fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(6,4))
-bplot = axes.boxplot(
-	x=np.transpose(dane_t),
-	labels=przedmioty,
-	vert=False,
-	patch_artist=True)
-for patch, color in zip(bplot['boxes'], colors):
-	patch.set_facecolor(color)
-'''
 plt.show()

@@ -6,11 +6,12 @@ from matplotlib import pyplot
 import pandas as pd
 import matplotlib.pyplot as plt
 
-dataset = pd.read_csv('Database/grouped_by_type.csv', header=0)
+dataset = pd.read_csv('Database/Grouped_by_type.csv', header=0)
 
 X = dataset.iloc[:, 1:9].values
 
-"""# Use head() function to return the first 5 rows:
+"""
+# Use head() function to return the first 5 rows:
 dataset.head()
 # Assign values to the X and y variables:
 X = dataset.iloc[:, 1:9].values
@@ -42,6 +43,7 @@ print(X)
 plt.scatter(X[:, 0], X[:, 1], s=50)
 plt.show()
 
+# compute K-Means
 kmeans = KMeans(n_clusters=4)
 kmeans.fit(X)
 y_kmeans = kmeans.predict(X)
