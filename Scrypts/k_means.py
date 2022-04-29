@@ -1,8 +1,5 @@
 # k-means clustering
-from numpy import unique
-from numpy import where
 from sklearn.cluster import KMeans
-from matplotlib import pyplot
 import pandas as pd
 import matplotlib.pyplot as plt
 
